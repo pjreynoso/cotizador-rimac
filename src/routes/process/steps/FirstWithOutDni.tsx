@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react'
 import Input from '../../../components/Input'
 import { useForm } from 'react-hook-form';
 // import { Post } from '../../../utils'
-import DataFamily from '../DataFamily'
+import DataFamily, { Family } from '../DataFamily'
 
 interface Prop {
   nextStep: () => void
+  submitFirstStep: (e: Array<Family>) => any
 }
 
-const FirstStep: React.FC<Prop> = ({ nextStep }) => {
+const FirstStep: React.FC<Prop> = ({ nextStep, submitFirstStep }) => {
   const { register, handleSubmit, errors } = useForm()
   const [onlySecurity, setOnlySecurity] = useState('')
+  const [family, setFamilyWrapper] = useState<Array<Family>>([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +32,7 @@ const FirstStep: React.FC<Prop> = ({ nextStep }) => {
 
   const onSubmit = (data: any) => {
     nextStep()
+    submitFirstStep(family)
   }
 
   return (
@@ -67,7 +70,7 @@ const FirstStep: React.FC<Prop> = ({ nextStep }) => {
           </div>
           <div>
             {
-              onlySecurity === 'much' && <DataFamily setFamilyWrapper={() => {}}/>
+              onlySecurity === 'much' && <DataFamily setFamilyWrapper={setFamilyWrapper}/>
             }
           </div>
           <div className='process-content__button'>

@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { Family } from '../DataFamily'
 import iconArrowBottom from '../../../images/bottom.svg'
 import exclusion from '../../../images/exclusion.svg'
 import correct from '../../../images/correct.png'
 import Table from '../Table'
 
-const SecondStep = (props: any) => {
+interface Props {
+  family: Array<Family>
+  prevStep: () => void
+}
+
+const SecondStep: React.FC<Props> = ({ family }) => {
   const history = useHistory()
   const [cardActive, setCardActive] = useState(1)
+  const [showTableFamily , setShowTableFamily] = useState<boolean>(false)
+  const [myFamily, setMyFamily] = useState<Array<Family>>([])
   const plan = [
     {
       id: 1,
@@ -40,6 +48,10 @@ const SecondStep = (props: any) => {
     }
   ]
 
+  useEffect(() => {
+    family.length > 0 && setMyFamily(family)
+  }, [family])
+
   const cardSelect = (id: number) => {
     setCardActive(id)
   }
@@ -68,10 +80,50 @@ const SecondStep = (props: any) => {
     </>
  )
 
+ const TableFamily = () => {
+   let sumTotal = 0
+   myFamily.forEach(element => { 
+    const sum = element.typeFamily === 'Conyuge' ? 40 : 60 
+
+    return sumTotal + sum
+   });
+
+    return(
+      <div>
+        <div className='family'>
+        {
+          myFamily.map( (fam) => (
+            <div className='rowFamily' key={fam.id}>
+              <span>{fam.typeFamily}</span>
+              <span>{`S/ ${fam.typeFamily === 'Conyuge' ? '40': '60'}`}</span> 
+            </div>
+          ))
+        }
+        </div>
+        <div className='rowFamily'>
+          <span>PAGO TOTAL MENSUAL</span>
+          <span>S./ 160</span>
+        </div>
+      </div>
+    )
+ }
+
   return (
     <div className='content__plans'>
       <div style={{ display: 'flex', marginBottom: 20, overflowY: 'scroll'}}>
         <Plans />
+      </div>
+      <div className='content__plans__tableFamily' >
+        <div className='content__plans__tableFamily__header' onClick={() => setShowTableFamily(!showTableFamily)} >
+          <span>{`Tienes(${myFamily.length}) asegurados`}</span>
+          <span>RESUMEN DEL PLAN</span>
+        </div>
+        {
+          showTableFamily ? 
+            <TableFamily />
+          : 
+            ''
+        }
       </div>
       <Table cardId={cardActive}/>
       <div style={{marginTop: 35}}>

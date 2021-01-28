@@ -1,4 +1,4 @@
-import React from 'react'
+import  { useState } from 'react'
 import Input from '../../components/Input'
 import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
@@ -7,16 +7,25 @@ import family from '../../images/family.svg'
 import logoCompany from '../../images/logoCompany.svg'
 
 const Login = () => {
+  const { register, handleSubmit, errors, setError, clearErrors } = useForm()
   const history = useHistory()
+  const [politicData, setPoliticData] = useState<Boolean>(false)
+  const [politicComercial, setPoliticComercial] = useState<Boolean>(false)
 
   const  onSubmit  = ({ documentNumber }) => {
-    history.push({
-      pathname: '/process',
-      state: { documentNumber }
-    })
+    if(politicComercial && politicData) {
+      history.push({
+        pathname: '/process',
+        state: { documentNumber }
+      })
+    } else {
+      setError('politics',{
+        type: 'manual',
+        message: 'Se debe aceptar las condiciones'
+      })
+    }
   }
 
-  const { register, handleSubmit, errors } = useForm()
 
   return(
     <div className='login'>
@@ -73,9 +82,18 @@ const Login = () => {
           />
         </div>
         <div className='login__form__terms'>
+          {errors?.politics ? <span className='message-warning'>{errors.politics?.message}</span> : null}
             <div className='terms__item'>
               <div className="custom-checkbox">
-                <input type='checkbox' id='checkbox1' className='content-terms__input' />
+                <input
+                  type='checkbox'
+                  id='checkbox1'
+                  className='content-terms__input'
+                  onChange={() => {
+                    setPoliticData(!politicData)
+                    clearErrors()
+                  }}
+                />
                 <label htmlFor="checkbox1" className="content-terms__input">
                   <div>
                     <p className='terms'>
@@ -87,7 +105,15 @@ const Login = () => {
             </div>
           <div className='terms__item'>
               <div className="custom-checkbox">
-                <input type='checkbox' id="checkbox2" className='content-terms__input' />
+                <input
+                  type='checkbox'
+                  id="checkbox2"
+                  className='content-terms__input'
+                  onChange={() => {
+                    setPoliticComercial(!politicComercial)
+                    clearErrors()
+                  }}
+                  />
                 <label htmlFor="checkbox2" className="content-terms__input">
                   <div className='terms'>
                     <p>Acepto la politica de envio de <br /> <span className='checkbox__label'>Comunicaciones Comerciales </span></p>

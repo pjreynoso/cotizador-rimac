@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-interface Family {
+export interface Family {
   id: number
   typeFamily: string
   birthdate: string 
@@ -35,6 +35,7 @@ const DataFamily = (props: props) => {
     const newFamily = family.filter( e => e.id !== id) 
 
     setFamily(newFamily)
+    setFamilyWrapper(newFamily)
   }
 
   const handleSelect = (event: React.ChangeEvent<{ value: unknown }>) => {

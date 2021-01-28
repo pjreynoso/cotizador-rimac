@@ -1,28 +1,59 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import Input from '../../../components/Input'
 import { useForm } from 'react-hook-form';
-import DataFamily from '../DataFamily'
+import DataFamily, { Family } from '../DataFamily'
+
+interface Person {
+  id: number
+  numberDocument: string 
+  name: string
+  firstLastName: string
+  secondLastName: string
+  birthday: string
+  gender: string
+}
 
 interface Prop {
   nextStep: () => void
+  person: Person
+  submitFirstStep: (e: Array<Family>) => any
 }
 
-const FirstStep: React.FC<Prop> = ({ nextStep }) => {
+const FirstStep: React.FC<Prop> = ({ nextStep , person, submitFirstStep}) => {
   const [, setGender] = useState('M')
-  const [, setFamilyWrapper] = useState('M')
-  const { register, handleSubmit, errors } = useForm()
+  const [family, setFamilyWrapper] = useState<Array<Family>>([])
+  const { register, handleSubmit, errors, setValue, setError, clearErrors } = useForm()
   const [onlySecurity, setOnlySecurity] = useState('')
+
+
+  useEffect(() => {
+    const setValuesForm = () => {
+      for(let k in person) {
+        setValue(k, person[k])
+      }
+    }
+    setValuesForm()
+  }, [person, setValue])
 
   const onChangeGender = (e: any) => {
     setGender(e.target.value)
   }
 
   const onChangeOnlySecurity = (e: any) => {
+    clearErrors()
     setOnlySecurity(e.target.value)
   }
 
   const onSubmit = (data: any) => {
-    nextStep()
+    if(onlySecurity) {
+      nextStep()
+      submitFirstStep(family)
+    } else {
+      setError('onlySecurity', {
+        type: 'manual',
+        message: 'Se requiere este campo'
+      })
+    }
   }
 
   return (
@@ -47,7 +78,7 @@ const FirstStep: React.FC<Prop> = ({ nextStep }) => {
           </div>
           <div className='register__item'>
             <Input
-              name='names'
+              name='name'
               label='Nombres'
               register={register({
                 required: 'El campo nombres es requerido',
@@ -57,11 +88,11 @@ const FirstStep: React.FC<Prop> = ({ nextStep }) => {
                 }
               })}
             />
-            {errors?.names ? <span className='message-warning'>{errors.names?.message}</span> : null}
+            {errors?.name ? <span className='message-warning'>{errors.name?.message}</span> : null}
           </div>
           <div className='register__item'>
             <Input
-              name='firtLastname'
+              name='firstLastName'
               label='Apellido paterno'
               register={register({
                 required: 'El campo apellido paterno es requerido',
@@ -71,7 +102,7 @@ const FirstStep: React.FC<Prop> = ({ nextStep }) => {
                 }
               })}
             />
-            {errors?.names ? <span className='message-warning'>{errors.names?.message}</span> : null}
+            {errors?.firstLastName ? <span className='message-warning'>{errors.firstLastName?.message}</span> : null}
           </div>
           <div className='register__item'>
             <Input
@@ -90,7 +121,8 @@ const FirstStep: React.FC<Prop> = ({ nextStep }) => {
         <div className='login__form__birthdate'>
           <input
             placeholder="  Fecha de nacimiento"
-            name='date'
+            ref={register}
+            name='birthday'
             type="text"
             onBlur={
               (e) => {
@@ -112,7 +144,7 @@ const FirstStep: React.FC<Prop> = ({ nextStep }) => {
           <div>
             <div onChange={onChangeGender} className='flex-direction-column'>
               <div>
-                <input type='radio' value='M' name='gender' id='m' /> 
+                <input type='radio' value='M' name='gender' id='m'  defaultChecked/> 
                 <label htmlFor='m'>Masculino</label>
               </div>
               <div>
@@ -133,6 +165,7 @@ const FirstStep: React.FC<Prop> = ({ nextStep }) => {
                 <label htmlFor='much' >A mi y a mi familia</label>
               </div>
             </div>
+            {errors?.onlySecurity ? <span className='message-warning'>{errors.onlySecurity?.message}</span> : null}
           </div>
           <div>
             {

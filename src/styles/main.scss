@@ -26,7 +26,7 @@ body {
 
 .process-content__button {
     @extend %justify-content-end;
-    margin-bottom: 30px;
+    padding: 10% 0;
 }
 
 %flex-align-center {

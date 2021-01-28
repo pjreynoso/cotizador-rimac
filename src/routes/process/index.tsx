@@ -1,15 +1,26 @@
 import React, {useState} from 'react'
 import FirstStep from './steps/FirstStep'
-// import axios from 'axios'
 import SecondStep from './steps/SecondStep'
 import FristWithOutDni  from './steps/FirstWithOutDni'
+import { Family } from './DataFamily'
 import ArrowBack from '../../images/arrow-back.svg'
 import { withRouter } from 'react-router'
 import logoCompany from '../../images/logoCompany.svg'
 import { Steps } from "../../components/Step";
 import family from '../../images/family.svg'
+// import axios from 'axios'
+
 const { Step } = Steps;
 
+const person = {
+  id: 1,
+  numberDocument: '72494600',
+  name: 'Pablo',
+  firstLastName: 'Reynoso',
+  secondLastName: 'Mena',
+  birthday: '19/08/1998',
+  gender: 'M'
+}
 
 const ProcessRouter = (props:any) => {
   const DNI = Number(process.env.REACT_APP_DNI || 0)
@@ -17,6 +28,8 @@ const ProcessRouter = (props:any) => {
   const { location: { state: { documentNumber } } } = props
   const [currentStep, changeStep] = useState(0);
   const notFoundDni = Number(documentNumber) !== DNI
+
+  const [dataFirstStep, setDataFirstStep] = useState<Array <Family>>([])
 
   /*
   useEffect(() => {
@@ -35,14 +48,18 @@ const ProcessRouter = (props:any) => {
     changeStep(currentStep - 1);
   };
 
+  const submitFirstStep = (data: Array<Family>) => {
+    setDataFirstStep(data)
+  }
+
   const steps = [
     {
       key: "step-1",
-      component: () => notFoundDni ? <FristWithOutDni nextStep={next}/> : <FirstStep nextStep={next}/>
+      component: () => notFoundDni ? <FristWithOutDni nextStep={next} submitFirstStep={submitFirstStep}  /> : <FirstStep nextStep={next} person={person} submitFirstStep={submitFirstStep} />
     },
     {
       key: "step-2",
-      component: () => <SecondStep prevStep={prev}/>
+      component: () => <SecondStep prevStep={prev} family={dataFirstStep}/>
     }
   ];
 
@@ -70,7 +87,7 @@ const ProcessRouter = (props:any) => {
             {
               currentStep === 0 ? 
                 <>
-                  <p className='process__form__header__text__greeting'>Hola, <span className='process__form__header__text__name'>{notFoundDni ? `¡empecemos!` : 'Luisa' }</span></p>
+                  <p className='process__form__header__text__greeting'>Hola, <span className='process__form__header__text__name'>{notFoundDni ? `¡empecemos!` : person.name }</span></p>
                   {
                     notFoundDni ?
                       <p className='process__form__header__text__description'>Cuéntanos un poco sobre ti.</p>
