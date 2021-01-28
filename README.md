@@ -1,6 +1,6 @@
 # Cotizador Rimac
 
-Reto de cotizador.
+La URL del proyecto desplegado: https://flamboyant-bell-fca29a.netlify.app/
 
 ### Pasos
 1) Instalar dependencias
