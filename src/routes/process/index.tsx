@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import FirstStep from './steps/FirstStep'
-import axios from 'axios'
+// import axios from 'axios'
 import SecondStep from './steps/SecondStep'
 import FristWithOutDni  from './steps/FirstWithOutDni'
 import ArrowBack from '../../images/arrow-back.svg'
@@ -14,10 +14,9 @@ const { Step } = Steps;
 const ProcessRouter = (props:any) => {
   const DNI = Number(process.env.REACT_APP_DNI || 0)
 
-  const { history, location: { state: { documentNumber } } } = props
-  const [step, setStep] = useState(1)
+  const { location: { state: { documentNumber } } } = props
   const [currentStep, changeStep] = useState(0);
-  const notFoundDni = documentNumber != DNI
+  const notFoundDni = Number(documentNumber) !== DNI
 
   /*
   useEffect(() => {
@@ -51,15 +50,15 @@ const ProcessRouter = (props:any) => {
     <div className='process'>
       <div className='process__info'>
         <div className='process__info__rimac'>
-          <img src={logoCompany} />
+          <img src={logoCompany} alt='Logo Rimac'/>
         </div>
-        <img src={family} className='process__info__family'/>
+        <img src={family} className='process__info__family' alt='Logo Family'/>
       </div>
       <div className='process__form'>
         <div className='process__form__header'>
           <div className='process__form__header__steps'>
             <div className='process__form__header__steps__icon' onClick={() => currentStep > 0 && prev()}>
-              <img src={ArrowBack}/>
+              <img src={ArrowBack} alt='Arrow'/>
             </div>
             <div>
               <p

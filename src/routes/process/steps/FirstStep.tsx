@@ -8,23 +8,11 @@ interface Prop {
   nextStep: () => void
 }
 
-const FirstStep = ({ nextStep }) => {
-  const [gender, setGender] = useState('M')
-  const [family, setFamilyWrapper] = useState('M')
-  const { register, handleSubmit, setValue, errors } = useForm()
-  const [data, setData] = useState<any>({})
+const FirstStep: React.FC<Prop> = ({ nextStep }) => {
+  const [, setGender] = useState('M')
+  const [, setFamilyWrapper] = useState('M')
+  const { register, handleSubmit, errors } = useForm()
   const [onlySecurity, setOnlySecurity] = useState('')
-  const [date, setDate] = useState('')
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const { result = {} } = await Post(`/contact/update`, {}, {
-        'Content-type': 'application/json'
-      })
-      setData(result)
-    }
-    fetchData()
-  }, [])
 
   const onChangeGender = (e: any) => {
     setGender(e.target.value)

@@ -81,32 +81,32 @@ const Table = (props:any) => {
               </div>
           </div>
           <div className='information__table--image'>
-            <img src={IconPlan} width='100px' height='100px'/>
+            <img src={IconPlan} width='100px' height='100px' alt='Plan'/>
           </div>
         </div>
         <div className='table__information--description'>
           <div style={{ display: 'flex', alignItems: 'center'}}>
-            <img src={planSelected?.detail.zone ? IconHeart : IconHeartDisable} height='20px' style={{marginRight: 10}}/>
+            <img alt='Zone' src={planSelected?.detail.zone ? IconHeart : IconHeartDisable} height='20px' style={{marginRight: 10}}/>
             <p className={`information__description--${planSelected?.detail.zone ? 'active' : 'disable'}`}>Lima <span className='information__description--message'>(zona de cobertura)</span></p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center'}}>
-            <img src={ planSelected?.detail.locals? IconHeart : IconHeart} height='20px' style={{marginRight: 10}}/>
+            <img alt='Hearth' src={ planSelected?.detail.locals? IconHeart : IconHeart} height='20px' style={{marginRight: 10}}/>
             <p className={`information__description--${planSelected?.detail.locals ? 'active' : 'disable'}`}>+30 clinicas <span className='information__description--message'>(zona de cobertura)</span></p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center'}}>
-            <img src={planSelected?.detail.medicDelivery? IconHeart : IconHeartDisable} height='20px' style={{marginRight: 10}}/>
+            <img alt='Delivery' src={planSelected?.detail.medicDelivery? IconHeart : IconHeartDisable} height='20px' style={{marginRight: 10}}/>
             <p className={`information__description--${planSelected?.detail?.medicDelivery ? 'active': 'disable'}`}>Medico a domicilio</p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center'}}>
-            <img src={planSelected?.detail.checked ? IconHeart : IconHeartDisable} height='20px' style={{marginRight: 10}}/>
+            <img alt='Check' src={planSelected?.detail.checked ? IconHeart : IconHeartDisable} height='20px' style={{marginRight: 10}}/>
             <p className={`information__description--${planSelected?.detail?.checked ? 'active': 'disable'}`}>Chequeos proventivos</p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center'}}>
-            <img src={planSelected?.detail.refundNacionality ? IconHeart : IconHeartDisable} height='20px' style={{marginRight: 10}}/>
+            <img alt='Nacionality' src={planSelected?.detail.refundNacionality ? IconHeart : IconHeartDisable} height='20px' style={{marginRight: 10}}/>
             <p className={`information__description--${planSelected?.detail?.refundNacionality ? 'active' : 'disable'}`}>Reembolso nacional</p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center'}}>
-            <img src={planSelected?.detail.refundInternational ? IconHeart : IconHeartDisable} height='20px' style={{marginRight: 10}}/>
+            <img alt='International' src={planSelected?.detail.refundInternational ? IconHeart : IconHeartDisable} height='20px' style={{marginRight: 10}}/>
             <p className={`information__description--${planSelected?.detail?.refundInternational ? 'active' : 'disable'}`}>Reembolso internacional</p>
           </div>
         </div>

@@ -86,7 +86,7 @@ const DataFamily = (props: props) => {
       </div>
         {
           family.map(e => (
-            <div className='layout-data-family'>
+            <div className='layout-data-family' key={e.id}>
               <div className='layout-data-family-item'>
                 <span>{e.typeFamily}</span>
               </div>

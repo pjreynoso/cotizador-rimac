@@ -22,9 +22,10 @@
 
     &--red {
       font-size: 30px;
-      font-weight: 500;
       margin: 0;
       margin-bottom: 15px;
+      color: $color-primary;
+      font-weight: bold;
     }
   }
 

@@ -1,45 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import Input from '../../../components/Input'
 import { useForm } from 'react-hook-form';
-import { Post } from '../../../utils'
+// import { Post } from '../../../utils'
 import DataFamily from '../DataFamily'
 
 interface Prop {
   nextStep: () => void
 }
 
-const FirstStep = ({ nextStep }) => {
-  const [gender, setGender] = useState('M')
-  const { register, handleSubmit, setValue, errors } = useForm()
-  const [data, setData] = useState<any>({})
+const FirstStep: React.FC<Prop> = ({ nextStep }) => {
+  const { register, handleSubmit, errors } = useForm()
   const [onlySecurity, setOnlySecurity] = useState('')
-  const [date, setDate] = useState('')
 
-  /* No es necesario que utilize tantos metodos
-   *
-   * Descargar React Hook Form
-   *
-   */
   useEffect(() => {
     const fetchData = async () => {
+      /*
       const { result = {} } = await Post(`/contact/update`, {}, {
         'Content-type': 'application/json'
       })
       setData(result)
+      */
     }
     fetchData()
   }, [])
-
-  const onChangeGender = (e: any) => {
-    setGender(e.target.value)
-  }
 
   const onChangeOnlySecurity = (e: any) => {
     setOnlySecurity(e.target.value)
   }
 
   const onSubmit = (data: any) => {
-    console.log(data,'AHHH')
     nextStep()
   }
 

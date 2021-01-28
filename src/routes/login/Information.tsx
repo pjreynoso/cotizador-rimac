@@ -60,8 +60,8 @@ const InformationList = () => (
     <div>
       <p className='content-information__title'>Seguro de <br /><span className='title__salud'>Salud</span></p>
       <div>
-        {steps.map( e => {
-          return cloneElement(e.component())
+        {steps.map((e, key) => {
+          return cloneElement(e.component(), { key })
         })}
       </div>
     </div>

@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-import Input from '../../../components/Input'
 import { useHistory } from 'react-router-dom'
 import iconArrowBottom from '../../../images/bottom.svg'
 import exclusion from '../../../images/exclusion.svg'
 import correct from '../../../images/correct.png'
-import { useForm } from "react-hook-form";
 import Table from '../Table'
 
 const SecondStep = (props: any) => {
-  const { changeStep } = props
   const history = useHistory()
   const [cardActive, setCardActive] = useState(1)
   const plan = [
@@ -55,7 +52,7 @@ const SecondStep = (props: any) => {
             <div style={{ height: 20, display: 'flex', justifyContent: 'flex-end' }}>
               {
                 e.id === cardActive ?
-                  <img src={correct} width='20px' />
+                  <img src={correct} width='20px' alt='Card'/>
                   :
                   null
               }
@@ -73,7 +70,7 @@ const SecondStep = (props: any) => {
 
   return (
     <div className='content__plans'>
-      <div style={{ display: 'flex', marginBottom: 20}}>
+      <div style={{ display: 'flex', marginBottom: 20, overflowY: 'scroll'}}>
         <Plans />
       </div>
       <Table cardId={cardActive}/>
@@ -81,15 +78,15 @@ const SecondStep = (props: any) => {
         <p className='process__review'>Revisa nuestros</p>
         <div className='process__options-exclusion'>
           <p className='process__services'>servicios y exclusiones</p>
-          <img src={exclusion} className='image-exclusion'/>
+          <img src={exclusion} className='image-exclusion' alt='Review'/>
         </div>
         <div className='process__options'>
           <p className='process__services-all'>Servicios brindados</p>
-          <img src={iconArrowBottom} />
+          <img src={iconArrowBottom} alt='Options'/>
         </div>
         <div className='process__options'>
           <p className='process__services-all'>Exclusiones</p>
-          <img src={iconArrowBottom}/>
+          <img src={iconArrowBottom} alt='Service'/>
         </div>
       </div>
       <div style={{ marginTop: 35}}>

@@ -12,14 +12,14 @@ const ThanksRouter = () => {
         <div className='content__thanks-column'>
             <div className='content__thanks--information'>
               <div className='header__logo'>
-                <img src={logoCompany} />
+                <img src={logoCompany} alt='Logo'/>
               </div>
-              <img src={family} className='thanks__logo-family'/>
+              <img src={family} className='thanks__logo-family' alt='Family'/>
             </div>
             <div className='content__thanks'>
                 <div>
                     <div className='thanks__image'>
-                        <img src={iconThanks}/>
+                        <img src={iconThanks} alt='Thanks'/>
                     </div>
                     <p className='thanks__form--title'>Gracias por <span className='thanks__form--title-name'>confiar en <br/> nosotros!</span></p>
                     <p>Queremos conocer mejor la salud de los segurados. Un asesor <span>se <br/> pondra en contacto contigo en las siguientes 48 horas</span></p>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Input from '../../components/Input'
 import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
@@ -16,16 +16,16 @@ const Login = () => {
     })
   }
 
-  const { register, handleSubmit, setValue, errors } = useForm()
+  const { register, handleSubmit, errors } = useForm()
 
   return(
     <div className='login'>
       <div className='login__info'>
           <div className='login__info__rimac'>
-            <img src={logoCompany} />
+            <img src={logoCompany} alt='Rimac logo'/>
           </div>
           <Information />
-        <img src={family} className='login__info__family'/>
+        <img src={family} className='login__info__family' alt='Family logo'/>
       </div>
       <div className='login__form'>
         <form onSubmit={handleSubmit(onSubmit)}>
