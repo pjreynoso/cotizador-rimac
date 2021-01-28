@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import Input from '../../../components/Input'
 import { useForm } from 'react-hook-form';
-import { Post } from '../../../utils'
 import DataFamily from '../DataFamily'
 
 interface Prop {
