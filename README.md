@@ -18,6 +18,7 @@ Las dos variables son fundamentales para el funcionamiento correcto de la aplica
 
 `
 REACT_APP_API_ENDPOINT=https://freestyle.getsandbox.com
+
 REACT_APP_DNI=72494600
 `
 
