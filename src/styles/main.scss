@@ -1,0 +1,129 @@
+@import './Login/login.scss';
+@import './Input/index.scss';
+@import './Select/index.scss';
+@import './Process/index.scss';
+@import './Thanks/index.scss';
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.display-flex {
+    display: flex;
+    width: 100%;
+}
+
+%justify-content-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.process-content__button {
+    @extend %justify-content-end;
+    margin-bottom: 30px;
+}
+
+%flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-direction-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-warning {
+    color: red;
+    font-size: 12px;
+}
+
+.custom-checkbox {
+  width: 100%;
+  position: relative;
+  display: block;
+
+  input[type="checkbox"] {
+    width: auto;
+    opacity: 0.00000001;
+    background-color: red;
+    position: absolute;
+    left: 0;
+    margin-left: -20px;
+  }
+
+  label {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 4px;
+      width: 22px;
+      height: 22px;
+      transition: transform 0.28s ease;
+      border-radius: 3px;
+      border: 2px solid #A3ABCC;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      color: white;
+      width: 10px;
+      height: 5px;
+      border-bottom: 2px solid white;
+      border-left: 2px solid white;
+      -webkit-transform: rotate(-45deg) scale(0);
+      transform: rotate(-45deg) scale(0);
+      transition: transform ease 0.25s;
+      will-change: transform;
+      position: absolute;
+      top: 12px;
+      left: 10px;
+    }
+  }
+
+  input[type="checkbox"]:checked ~ label {
+    &::before {
+      background-color: #83CC5E;
+    }
+
+    &::after {
+      -webkit-transform: rotate(-45deg) scale(1);
+      transform: rotate(-45deg) scale(1);
+    }
+  }
+
+  label {
+    min-height: 34px;
+    display: block;
+    padding-left: 40px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+
+    span {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+  }
+
+  input[type="checkbox"]:focus + label::before {
+    outline: 0;
+  }
+}
+
+.checkbox__label {
+    position: relative !important;
+}

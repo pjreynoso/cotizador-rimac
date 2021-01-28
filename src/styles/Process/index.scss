@@ -1,0 +1,369 @@
+@import "../variable.scss";
+
+.process {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 100%;
+
+  &__info {
+    position: relative;
+    background-image: url('../../images/base.svg');
+    background-size: cover;
+    height: 90%;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__rimac {
+      padding: 20px 0 0 32px;
+    }
+
+    &__family {
+      width: 70%;
+      position: absolute;
+      right: -100px;
+      bottom: 17%;
+      @media screen and (max-width: 1120px) {
+        width: 100%;
+        right: -70px;
+      }
+      @media screen and (max-width: 845px) {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 845px) {
+      height: 100%;
+      background-color: $color-primary;
+    }
+  }
+
+  @media screen and (max-width: 845px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 8% auto;
+  }
+}
+
+.process__form {
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    padding-left: 8%;
+    padding-top: 45px;
+    flex-direction: column;
+
+    &__text {
+      padding-left: 2%;
+
+
+      &__name{
+        font-weight: bold;
+        color: $color-primary;
+      }
+
+      &__greeting{
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 32px;
+      }
+
+
+      &__description {
+        color: #676F8F;
+        font-size: 16px;
+      }
+    }
+
+    &__steps {
+      @extend %flex-align-center;
+
+      &__icon {
+        display: flex;
+        margin-right: 10px;
+        width: 15px;
+        height: 15px; 
+        border-radius: 50%;
+        cursor: pointer;
+        border: 1px solid $color-primary;
+
+        img  {
+          width: 15px;
+          height: 15px;
+        }
+      }
+
+      &__text {
+        &--red {
+          color: $color-primary;
+        }
+      }
+    }
+
+    @media screen and (max-width: 845px) {
+      background-color: #F7F8FC;
+      padding: 5% 0 5% 10%;
+
+    }
+  }
+  @media screen and (max-width: 845px) {
+    padding: 0;
+  }
+}
+
+.register {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10%;
+
+  &__item {
+    margin-bottom: 20px;
+
+    &__document {
+      display: flex;
+      flex-direction: row;
+      margin-top: 30px; 
+      margin-bottom: 0; 
+
+      &__select{
+        height: 52px;
+        padding: 6px;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+      }
+
+      &__select:hover {
+        outline: none;
+      }
+
+
+      &__input {
+        padding-left: 15px;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        border: 1px solid #8E8E8E;
+        width: 100%;
+      }
+
+      &__input:hover {
+        outline: none;
+      }
+
+      &__input:focus{
+        outline: none;
+      }
+    }
+  }
+
+}
+
+.card-disable {
+  cursor: pointer;
+  margin-top: 15px;
+  padding: 5px 5px 10px 20px;
+  width: 25%;
+  border: 2px solid#c9c9c99f;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.card-active {
+  cursor: pointer;
+  margin-top: 15px;
+  padding: 5px 5px 10px 20px;
+  width: 25%;
+  border: 2px solid greenyellow;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.card__title {
+  margin: 0
+}
+
+.card__content__mount{
+  margin-top: 3px;
+}
+
+.card__mount {
+  font-size: 28px;
+}
+
+.card__recurrent {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.table {
+  border: 2px solid #b9b9b9e3;
+  border-radius: 10px;
+}
+
+.table__header {
+  background-color: #b9b9b9e3;
+  text-align: center;
+  color: white;
+  padding: 5px;
+}
+
+.table__information--main {
+  border-bottom: 1px solid  #c9c9c99f;
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0 20px 20px;
+  padding-bottom: 20px;
+}
+
+.information__main--title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.information__main--mount {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.information__main--recurrent {
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  background-color: rgb(138, 204, 39);
+  width: 130px;
+  border-radius: 500px;
+}
+
+.information__table--image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  border-left: 1px solid #c9c9c99f;
+}
+
+.information__description--active {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.information__description--disable{
+  font-size: 20px;
+  text-decoration: line-through;
+  color: #a1a1a1d8;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.table__information--description {
+  padding: 0 25px
+}
+
+.information__description--message {
+  font-size: 15px;
+  color:  #858585e3;
+}
+
+
+.process__options {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #c9c9c99f;
+  padding: 0px 15px;
+}
+
+.process__options-exclusion {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #c9c9c99f;
+  padding: 0px 15px;
+  position: relative;
+}
+
+.process__services {
+  margin-top: 0;
+  color:rgba(47, 128, 250, 0.9);
+  font-size: 20px;
+}
+
+.process__review {
+  padding-left: 15px;
+  margin: 0;
+  font-size: 18px;
+}
+
+.send-email {
+  color: rgb(47, 128, 250);
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+
+.form__title{
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.layout-data-family {
+  display: grid;
+  grid-template-columns: 35% 40% 25%;
+  grid-template-rows: 52px;
+}
+
+.process__header {
+  width: 100%;
+  padding-bottom: 48px;
+  background-color: transparent;
+  @media screen and (max-width: 845px) {
+    padding: 0 10%;
+    padding-bottom: 48px;
+    background-color: #F7F8FC;
+  }
+}
+
+.content__plans {
+  padding: 0 10%;
+}
+
+
+.image-exclusion {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+
+.select-family {
+  height: 50px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+.content-add-family {
+  text-align: center;
+  width: 100%;
+  padding: auto;
+}
+
+
+.add-family__text {
+  color: #939DFF;
+}
+
+.delete-family__text {
+  text-align: center;
+  color: #A9B1D1;
+}
+
+.layout-data-family-item {
+  display: flex;
+  align-items: center;
+  padding: 0 16px 16px;
+  text-align: left;
+  border-bottom: 1px solid #A9B1D1;
+  color: #A9B1D1;
+}

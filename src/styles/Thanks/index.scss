@@ -1,0 +1,103 @@
+.content__thanks-column {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 100%;
+    @media screen and (max-width: 450px) {
+        grid-template-columns: 100%;
+        grid-template-rows: 300px auto;
+    }
+}
+.content__thanks--information {
+    background-image: url('../../images/base.svg');
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-size: cover;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    @media screen and (max-width: 450px) {
+        background-image: url('../../images/baner.svg');
+    }
+}
+
+.thanks__information--text{
+    height: 100%;
+    border-bottom-right-radius: 10%;
+    width: 100%;
+    background-color: $color-primary;
+}
+
+.thanks__information--inclination {
+    overflow: hidden;
+    width: 20%;
+}
+
+.thanks__logo-family {
+    width: 320px;
+    height: 448px;
+    position: absolute;
+    right: -10%;
+    bottom: 22%;
+    @media screen and (max-width: 450px) {
+        display: none;
+    }
+    @media screen and (max-width: 850px) {
+        width: 200px;
+    }
+}
+
+.content__thanks {
+    padding: 0 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 450px) {
+        padding: 10% 10%;
+        align-items: flex-start;
+    }
+}
+
+.container__button {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.thanks__image {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    @media screen and (max-width: 450px) {
+        display: none;
+    }
+}
+
+.thanks__form--title-name{
+    font-weight: bold;
+    color: $color-primary;
+}
+
+.thanks__form--title{
+    margin-top: 10px;
+    font-size: 32px;
+    @media screen and (max-width: 450px) {
+        font-size: 28px;
+    }
+}
+
+.button-thanks{
+    height: 52px;
+    padding: 0 25px;
+    border-radius: 6px;
+    background-color: $color-primary;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    @media screen and (max-width: 450px) {
+        width: 100%;
+    }
+}
