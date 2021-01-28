@@ -22,9 +22,6 @@ REACT_APP_API_ENDPOINT=https://freestyle.getsandbox.com
 REACT_APP_DNI=72494600
 ```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
 ### Iniciar proyecto
 
 `
